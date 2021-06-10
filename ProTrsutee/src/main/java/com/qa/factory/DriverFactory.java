@@ -13,7 +13,7 @@ public class DriverFactory {
 	 * @return tldriver
 	 */
 	static {
-		System.setProperty("webdriver.chrome.driver", "D:\\mavenProj\\QDir\\driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
 	}
 	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<>();
 	

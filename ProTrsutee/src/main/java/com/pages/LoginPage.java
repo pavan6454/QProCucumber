@@ -3,14 +3,16 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.qa.util.Utils;
+
 public class LoginPage {
 	
 	private WebDriver driver;
-
+	
 	//locators or object repository
-	private By emailId = By.id("email");
-	private By password = By.id("passwd");
-	private By signInButton = By.id("SubmitLogin");
+	private By emailId = By.id("person_email");
+	private By password = By.id("person_password");
+	private By logInButton = By.name("commit");
 	private By forgotPwdLink = By.linkText("Forgot your password?");
 	
 	//Intialization
@@ -36,13 +38,15 @@ public class LoginPage {
 	}
 	
 	public void clickOnSignIn() {
-		driver.findElement(signInButton).click();
+		driver.findElement(logInButton).click();
 	}
 	
 	public AccountPage doLogin(String un,String pwd) {
 		driver.findElement(emailId).sendKeys(un);
+		Utils.waitUntilElementIsVisible(password);
 		driver.findElement(password).sendKeys(pwd);
-		driver.findElement(signInButton).click();
+		Utils.waitUntilElementIsVisible(logInButton);
+		driver.findElement(logInButton).click();
 		
 		return new AccountPage(driver);
 	}
