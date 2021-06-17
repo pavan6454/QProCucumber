@@ -41,13 +41,13 @@ public class LoginPage {
 		driver.findElement(logInButton).click();
 	}
 	
-	public AccountPage doLogin(String un,String pwd) {
+	public void doLogin(String un,String pwd) throws Exception {
 		driver.findElement(emailId).sendKeys(un);
 		Utils.waitUntilElementIsVisible(password);
 		driver.findElement(password).sendKeys(pwd);
 		Utils.waitUntilElementIsVisible(logInButton);
 		driver.findElement(logInButton).click();
+		Thread.sleep(5000);
 		
-		return new AccountPage(driver);
 	}
 }

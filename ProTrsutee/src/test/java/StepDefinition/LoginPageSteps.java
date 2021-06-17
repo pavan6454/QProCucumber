@@ -18,11 +18,10 @@ public class LoginPageSteps {
 	
 	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 	private static String title;
-	//private Properties prop;
+	private Properties prop;
 	
 	@Given("user has logged in to application")
-	public void user_has_logged_in_to_application(DataTable credTable) {
-		
+	public void user_has_logged_in_to_application(DataTable credTable) throws Exception {
 		List<Map<String,String>> credList= credTable.asMaps();
 	    String userName = credList.get(0).get("username");
 	    String password = credList.get(0).get("password");
@@ -32,7 +31,7 @@ public class LoginPageSteps {
 	
 	@Given("user is on login page")
 	public void user_is_on_login_page() throws Exception {
-		//prop.getProperty("url");
+		String ur = prop.getProperty("url");
 		DriverFactory.getDriver().get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
 		Thread.sleep(5000);
 	}
